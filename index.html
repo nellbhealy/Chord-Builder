@@ -1,28 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
-   
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="CSS.css">
 
-    <title>Chord Builder</title>
+  <title>Chord Builder</title>
+  <meta name="description" content="Chord Builder Game">
+  <meta name="author" content="Liam Becker, Anna Serenius, Kirsten Freeman">
 
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <!--Header Section-->
+  <header>
+    <div class="header1">Chord Builder</div>
+    <div class="header2">Max needs help learning the chords! </div>
+  </header>
+  <!--End Header Section-->
+  
+  <!--flexible container-->
+  <div class="flex_container">
+    <!--Sidebar-->
+    <div class="sidebar_left">
+      <div class="difficulty_question">What type of chords do you want to play?</div>
+      <div class="difficulty">Easy Chords</div>
+      <div class="difficulty">Medium Chords</div>
+      <div class="difficulty">Hard Chords</div>
+    </div>
+  <!--End sidebar-->
+  <!--Main gameplay column-->
+    <div class="play">
+      <img src="staff.png" width="800" height="650" >
 
+    </div>
+  </div>
 
-    <div id="gameWindow"></div>
-    <script>
-        //prevent page from scrolling from arrow keys or space
-        window.addEventListener("keydown", function (e) {
-            // space and arrow keys
-            if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-                e.preventDefault();
-            }
-        }, false);
-    </script>
 </body>
-
 </html>
