@@ -7,6 +7,8 @@ class SceneTemplate extends Phaser.Scene{
 
     preload() {
         this.load.image('staff', "./assets/staff.png");
+        this.load.image('note-black', "./assets/note-black");
+        this.load.image('note-red', "./assets/nore-red");
     }
 
     create(){
@@ -15,5 +17,9 @@ class SceneTemplate extends Phaser.Scene{
 
         //add background image
         this.add.image(0, 0, 'staff').setOrigin(0).setScale(1);
+    }
+
+    update(){
+        
     }
 }
