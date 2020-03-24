@@ -35,4 +35,19 @@ const config = {
     }
 }
 
-const game = new Phaser.Game(config);
+let loadScene = () => {
+    const game = new Phaser.Game(config);
+}
+
+let loaded = false;
+
+window.addEventListener("keydown", function (e) {
+    // space and arrow keys
+    if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+        if(!loaded){
+            loadScene();
+            loaded = true;
+        }
+    }
+}, false);
