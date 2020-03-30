@@ -1,5 +1,16 @@
 const width = 900;
 const height = 500;
+let gameState = {
+    scene: "",
+    chord:{
+        first: {
+            name: "",
+            sound: "",
+            image: "",
+            accidntal: "",
+        }
+    }
+};
 const y_values = {
     a3: 480,
     b3: 445,
@@ -20,7 +31,7 @@ const x_values = {
     two: 450,
     three: 600,
     four: 750
-}
+};
 
 const config = {
     width: width,

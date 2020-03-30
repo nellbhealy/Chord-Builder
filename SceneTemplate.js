@@ -1,15 +1,15 @@
-let gameState = {};
-
 class SceneTemplate extends Phaser.Scene{
     constructor(){
         super( { key: 'SceneTemplate' } );
     }
 
     preload() {
-        this.load.image('staff', "./assets/staff.png");
-        this.load.image('note-black', "./assets/note-black.png");
-        this.load.image('note-red', "./assets/note-red.png");
-        this.load.audio('d4', "./assets/D4.mp3");
+        // this.load.image('staff', "./assets/staff.png");
+        // this.load.image('note-black', "./assets/note-black.png");
+        // this.load.image('note-red', "./assets/note-red.png");
+        // this.load.audio('d4', "./assets/D4.mp3");
+        
+        //loadthesedamnimages(this);
     }
 
     create(){
