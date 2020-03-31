@@ -1,4 +1,4 @@
-function loadImages() {
+let loadImages = function() {
     gameState.scene.load.image('note-black', "assets/note-black.png");
     gameState.scene.load.image('black-flat', "assets/black-flat.png");
     gameState.scene.load.image('black-sharp', "assets/black-sharp.png");
@@ -27,31 +27,36 @@ function loadAudio() {
 }
 
 function createChord(chord_name) {
+    //create chord object inside of gameState
+    gameState.chord = {};
     gameState.chord.name = chord_name;
 
     //first note
+    gameState.chord.first = {};
     gameState.chord.first.name = majorChords[chord_name].first;
-    //does assigning sound like this work??
     gameState.chord.first.sound = gameState.scene.sound.add([gameState.chord.first.name]);
     gameState.chord.first.accidental = majorChords[chord_name].first.firstAccidental;
     gameState.chord.first.image = gameState.scene.physics.add.sprite(x_values.one, y_values[gameState.chord.first.name]).setScale(0.85);
 
     //third note
+    gameState.chord.third = {};
     gameState.chord.third.name = majorChords[chord_name].third;
     gameState.chord.third.sound = gameState.scene.sound.add([gameState.chord.third.name]);
-    randomizeAccidental(third);
+    randomizeAccidental("third");
     gameState.chord.third.image = gameState.scene.physics.add.sprite(x_values.two, y_values[gameState.chord.third.name]).setScale(0.85);
 
     //fifth note
+    gameState.chord.fifth = {};
     gameState.chord.fifth.name = majorChords[chord_name].fifth;
     gameState.chord.fifth.sound = gameState.scene.sound.add([gameState.chord.fifth.name]);
-    randomizeAccidental(fifth);
+    randomizeAccidental("fifth");
     gameState.chord.fifth.image = gameState.scene.physics.add.sprite(x_values.three, y_values[gameState.chord.fifth.name]).setScale(0.85);
 
     //seventh note
+    gameState.chord.seventh = {};
     gameState.chord.seventh.name = majorChords[chord_name].seventh;
     gameState.chord.seventh.sound = gameState.scene.sound.add([gameState.chord.seventh.name]);
-    randomizeAccidental(seventh);
+    randomizeAccidental("seventh");
     gameState.chord.seventh.image = gameState.scene.physics.add.sprite(x_values.one, y_values[gameState.chord.seventh.name]).setScale(0.85);
     
 }
