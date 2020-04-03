@@ -90,6 +90,7 @@ function createChord(chord_name) {
   //create chord object inside of gameState
   gameState.chord = {};
   gameState.chord.name = chord_name;
+  gameState.chord.playing = false;
 
   //create notes
   createNote("first");
@@ -305,6 +306,9 @@ function noteRight() {
  * @return {null}
  */
 function playNote() {
+  //Don't play anything if the chord is already playing
+  if (gameState.chord.playing) return;
+
   if (gameState.currentNote != "first") {
     gameState.chord[gameState.currentNote].sound.play();
   } else {
@@ -321,6 +325,7 @@ function playNote() {
  */
 function playChord() {
   gameState.chord.first.sound.play();
+  gameState.chord.playing = true;
 
   setTimeout(function() {
     gameState.chord.third.sound.play();
@@ -340,4 +345,8 @@ function playChord() {
     gameState.chord.fifth.sound.play();
     gameState.chord.seventh.sound.play();
   }, 1250);
+
+  setTimeout(function() {
+    gameState.chord.playing = false;
+  }, 2000);
 }
