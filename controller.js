@@ -5,28 +5,29 @@ let loadImages = function() {
 }
 
 function loadAudio() {
-    gameState.scene.load.audio('a3', "assets/notes/Piano.ff.A3.mp3");
-    gameState.scene.load.audio('a4', "assets/notes/Piano.ff.A4.mp3");
-    gameState.scene.load.audio('ab3', "assets/notes/Piano.ff.Ab3.mp3");
-    gameState.scene.load.audio('ab4', "assets/notes/Piano.ff.Ab4.mp3");
-    gameState.scene.load.audio('b3', "assets/notes/Piano.ff.B3.mp3");
-    gameState.scene.load.audio('b4', "assets/notes/Piano.ff.B4.mp3");
-    gameState.scene.load.audio('bb3', "assets/notes/Piano.ff.Bb3.mp3");
-    gameState.scene.load.audio('bb4', "assets/notes/Piano.ff.Bb4.mp3");
-    gameState.scene.load.audio('c4', "assets/notes/Piano.ff.C4.mp3");
-    gameState.scene.load.audio('c5', "assets/notes/Piano.ff.C5.mp3");
-    gameState.scene.load.audio('d4', "assets/notes/Piano.ff.D4.mp3");
-    gameState.scene.load.audio('d5', "assets/notes/Piano.ff.D5.mp3");
-    gameState.scene.load.audio('db4', "assets/notes/Piano.ff.Db4.mp3");
-    gameState.scene.load.audio('db5', "assets/notes/Piano.ff.Db5.mp3");
-    gameState.scene.load.audio('e4', "assets/notes/Piano.ff.e4.mp3");
-    gameState.scene.load.audio('eb4', "assets/notes/Piano.ff.Eb4.mp3");
-    gameState.scene.load.audio('eb5', "assets/notes/Piano.ff.Eb5.mp3");
-    gameState.scene.load.audio('f4', "assets/notes/Piano.ff.F4.mp3");
-    gameState.scene.load.audio('f5', "assets/notes/Piano.ff.F5.mp3");
+    gameState.scene.load.audio('a3', "assets/notes trimmed/A3.mp3");
+    gameState.scene.load.audio('a4', "assets/notes trimmed/A4.mp3");
+    gameState.scene.load.audio('ab3', "assets/notes trimmed/Ab3.mp3");
+    gameState.scene.load.audio('ab4', "assets/notes trimmed/Ab4.mp3");
+    gameState.scene.load.audio('b3', "assets/notes trimmed/B3.mp3");
+    gameState.scene.load.audio('b4', "assets/notes trimmed/B4.mp3");
+    gameState.scene.load.audio('bb3', "assets/notes trimmed/Bb3.mp3");
+    gameState.scene.load.audio('bb4', "assets/notes trimmed/Bb4.mp3");
+    gameState.scene.load.audio('c4', "assets/notes trimmed/C4.mp3");
+    gameState.scene.load.audio('c5', "assets/notes trimmed/C5.mp3");
+    gameState.scene.load.audio('d4', "assets/notes trimmed/D4.mp3");
+    gameState.scene.load.audio('d5', "assets/notes trimmed/D5.mp3");
+    gameState.scene.load.audio('db4', "assets/notes trimmed/Db4.mp3");
+    gameState.scene.load.audio('db5', "assets/notes trimmed/Db5.mp3");
+    gameState.scene.load.audio('e4', "assets/notes trimmed/E4.mp3");
+    gameState.scene.load.audio('eb4', "assets/notes trimmed/Eb4.mp3");
+    gameState.scene.load.audio('eb5', "assets/notes trimmed/Eb5.mp3");
+    gameState.scene.load.audio('f4', "assets/notes trimmed/F4.mp3");
+    gameState.scene.load.audio('f5', "assets/notes trimmed/F5.mp3");
 }
 
 function createChord(chord_name) {
+    gameState.currentNote = "first";
     //create chord object inside of gameState
     gameState.chord = {};
     gameState.chord.name = chord_name;
@@ -34,39 +35,68 @@ function createChord(chord_name) {
     //first note
     gameState.chord.first = {};
     gameState.chord.first.name = majorChords[chord_name].first;
-    gameState.chord.first.sound = gameState.scene.sound.add([gameState.chord.first.name]);
-    gameState.chord.first.accidental = majorChords[chord_name].first.firstAccidental;
     gameState.chord.first.image = gameState.scene.physics.add.sprite(x_values.one, y_values[gameState.chord.first.name]).setScale(0.85);
 
+    //accidental image is a sprite located to the left of each note image, initialized to be invisible since the note's accidental is tbd
+
+    //not sure if 50 pixels to the left of the note is a good distance away, so we can change later
+    gameState.chord.first.accidentalImage = gameState.scene.physics.add.sprite(x_values.one-50, 'black-flat');
+    gameState.chord.first.accidentalImage.sprite.setVisible(false);
+    //gameState.chord.first.sound = gameState.scene.sound.add([gameState.chord.first.name]);
+    if (majorChords[chord_name].first.firstAccidental != undefined){
+        gameState.chord.first.accidental = majorChords[chord_name].first.firstAccidental;
+        updateNote();
+    } else {
+        gameState.chord.first.accidental = "natural";
+    }
+   
+
+    gameState.currentNote = "third";
     //third note
     gameState.chord.third = {};
     gameState.chord.third.name = majorChords[chord_name].third;
-    gameState.chord.third.sound = gameState.scene.sound.add([gameState.chord.third.name]);
-    randomizeAccidental("third");
     gameState.chord.third.image = gameState.scene.physics.add.sprite(x_values.two, y_values[gameState.chord.third.name]).setScale(0.85);
 
+    gameState.chord.third.accidentalImage = gameState.scene.physics.add.sprite(x_values.two-50, 'black-flat');
+    gameState.chord.third.accidentalImage.sprite.setVisible(false);
+    //gameState.chord.third.sound = gameState.scene.sound.add([gameState.chord.third.name]);
+    randomizeAccidental("third");
+    updateNote();
+    
+
+    gameState.currentNote = "fifth";
     //fifth note
     gameState.chord.fifth = {};
     gameState.chord.fifth.name = majorChords[chord_name].fifth;
-    gameState.chord.fifth.sound = gameState.scene.sound.add([gameState.chord.fifth.name]);
-    randomizeAccidental("fifth");
     gameState.chord.fifth.image = gameState.scene.physics.add.sprite(x_values.three, y_values[gameState.chord.fifth.name]).setScale(0.85);
+    gameState.chord.fifth.accidentalImage = gameState.scene.physics.add.sprite(x_values.three-50, 'black-flat');
+    gameState.chord.fifth.accidentalImage.sprite.setVisible(false);
+    //gameState.chord.fifth.sound = gameState.scene.sound.add([gameState.chord.fifth.name]);
+    randomizeAccidental("fifth");
+    updateNote();
+    
 
+    gameState.currentNote = "seventh";
     //seventh note
     gameState.chord.seventh = {};
     gameState.chord.seventh.name = majorChords[chord_name].seventh;
-    gameState.chord.seventh.sound = gameState.scene.sound.add([gameState.chord.seventh.name]);
-    randomizeAccidental("seventh");
     gameState.chord.seventh.image = gameState.scene.physics.add.sprite(x_values.one, y_values[gameState.chord.seventh.name]).setScale(0.85);
+    gameState.chord.seventh.accidentalImage = gameState.scene.physics.add.sprite(x_values.four-50, 'black-flat');
+    gameState.chord.seventh.accidentalImage.sprite.setVisible(false);
+    //gameState.chord.seventh.sound = gameState.scene.sound.add([gameState.chord.seventh.name]);
+    randomizeAccidental("seventh");
+    updateNote();
     
+    
+    gameState.currentNote = "first";
 }
 
 function createAnimations(){
-    gameState.scene.anims.create({
+    /*gameState.scene.anims.create({
         key: 'natural',
         frames: [{key: 'note-black',  frame: 0}],
         frameRate: 50,
-    });
+    });*/
 
     gameState.scene.anims.create({
         key: 'sharp',
@@ -87,14 +117,18 @@ function updateNote(){
     if (gameState.chord[gameState.currentNote].accidental == 'flat'){
         //change note's sound
         gameState.chord[gameState.currentNote].sound = gameState.scene.sound.add(gameState.chord[gameState.currentNote].flatNote);
-        //change note's image
-        gameState.chord[gameState.currentNote].anims.play('flat', true);
+        //make accidental sprite visible and change note's accidental image
+        gameState.chord[gameState.currentNote].accidentalImage.sprite.setVisible(true);
+        gameState.chord[gameState.currentNote].accidentalImage.anims.play('flat', true);
     } else if (gameState.chord[gameState.currentNote].accidental == 'natural'){
         gameState.chord[gameState.currentNote].sound = gameState.scene.sound.add(gameState.chord[gameState.currentNote].name);
-        gameState.chord[gameState.currentNote].anims.play('natural', true);
+        //make accidental sprite invisible
+        gameState.chord[gameState.currentNote].accidentalImage.sprite.setVisible(false);
     } else if (gameState.chord[gameState.currentNote].accidental == 'sharp'){
         gameState.chord[gameState.currentNote].sound = gameState.scene.sound.add(gameState.chord[gameState.currentNote].sharpNote);
-        gameState.chord[gameState.currentNote].anims.play('sharp', true);
+         //make accidental sprite visible and change note's accidental image
+        gameState.chord[gameState.currentNote].accidentalImage.sprite.setVisible(true);
+        gameState.chord[gameState.currentNote].accidentalImage.anims.play('sharp', true);
     }
     playNote();
 }

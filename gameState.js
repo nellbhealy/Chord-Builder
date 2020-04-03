@@ -1,6 +1,39 @@
 let gameState = {
     scene: {
         load: {}
+
+    },
+    currentNote: "first",
+    chord: {
+        name: "",
+        first: {
+            name: "",
+            image: "",
+            sound: "",
+            accidental: "",
+            accidentalImage: ""
+        },
+        third: {
+            name: "",
+            image: "",
+            sound: "",
+            accidental: "",
+            accidentalImage: ""
+        },
+        fifth: {
+            name: "",
+            image: "",
+            sound: "",
+            accidental: "",
+            accidentalImage: ""
+        },
+        seventh: {
+            name: "",
+            image: "",
+            sound: "",
+            accidental: "",
+            accidentalImage: ""
+        }
     }
 };
 
