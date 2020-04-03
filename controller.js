@@ -111,7 +111,7 @@ function createChord(chord_name) {
  */
 function updateNote() {
   let note = gameState.chord[gameState.currentNote];
-  note.accidentalImage.setVisible(false);
+  note.accidentalImage.destroy();
   let note_name, x_offset, y_offset, key;
   const x_offset_sharp = 55,
     x_offset_flat = 45,
