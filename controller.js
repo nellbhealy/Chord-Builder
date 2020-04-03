@@ -24,6 +24,8 @@ function loadAudio() {
     gameState.scene.load.audio('eb5', "assets/notes trimmed/Eb5.mp3");
     gameState.scene.load.audio('f4', "assets/notes trimmed/F4.mp3");
     gameState.scene.load.audio('f5', "assets/notes trimmed/F5.mp3");
+    gameState.scene.load.audio('g1', "assets/notes trimmed/G1.mp3");
+    gameState.scene.load.audio('gb1', "assets/notes trimmed/Gb1.mp3");
 }
 
 function createChord(chord_name) {
@@ -115,8 +117,13 @@ function createAnimations(){
 
 function updateNote(){
     if (gameState.chord[gameState.currentNote].accidental == 'flat'){
-        //change note's sound
+        //change note's sound (need to change the way note's sound if change, see below)
         gameState.chord[gameState.currentNote].sound = gameState.scene.sound.add(gameState.chord[gameState.currentNote].flatNote);
+
+        //BELOW:
+        /*gameState.chord[gameState.currentNote].sound = gameState.scene.sound.add(chord.notes[gameState.currentNote.name].flat);
+        */
+
         //make accidental sprite visible and change note's accidental image
         gameState.chord[gameState.currentNote].accidentalImage.sprite.setVisible(true);
         gameState.chord[gameState.currentNote].accidentalImage.anims.play('flat', true);
