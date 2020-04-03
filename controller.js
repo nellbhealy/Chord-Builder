@@ -5,6 +5,7 @@ let loadImages = function() {
 };
 
 function loadAudio() {
+<<<<<<< HEAD
   gameState.scene.load.audio("a3", "assets/notes trimmed/A3.mp3");
   gameState.scene.load.audio("a4", "assets/notes trimmed/A4.mp3");
   gameState.scene.load.audio("ab3", "assets/notes trimmed/Ab3.mp3");
@@ -24,6 +25,29 @@ function loadAudio() {
   gameState.scene.load.audio("eb5", "assets/notes trimmed/Eb5.mp3");
   gameState.scene.load.audio("f4", "assets/notes trimmed/F4.mp3");
   gameState.scene.load.audio("f5", "assets/notes trimmed/F5.mp3");
+=======
+    gameState.scene.load.audio('a3', "assets/notes trimmed/A3.mp3");
+    gameState.scene.load.audio('a4', "assets/notes trimmed/A4.mp3");
+    gameState.scene.load.audio('ab3', "assets/notes trimmed/Ab3.mp3");
+    gameState.scene.load.audio('ab4', "assets/notes trimmed/Ab4.mp3");
+    gameState.scene.load.audio('b3', "assets/notes trimmed/B3.mp3");
+    gameState.scene.load.audio('b4', "assets/notes trimmed/B4.mp3");
+    gameState.scene.load.audio('bb3', "assets/notes trimmed/Bb3.mp3");
+    gameState.scene.load.audio('bb4', "assets/notes trimmed/Bb4.mp3");
+    gameState.scene.load.audio('c4', "assets/notes trimmed/C4.mp3");
+    gameState.scene.load.audio('c5', "assets/notes trimmed/C5.mp3");
+    gameState.scene.load.audio('d4', "assets/notes trimmed/D4.mp3");
+    gameState.scene.load.audio('d5', "assets/notes trimmed/D5.mp3");
+    gameState.scene.load.audio('db4', "assets/notes trimmed/Db4.mp3");
+    gameState.scene.load.audio('db5', "assets/notes trimmed/Db5.mp3");
+    gameState.scene.load.audio('e4', "assets/notes trimmed/E4.mp3");
+    gameState.scene.load.audio('eb4', "assets/notes trimmed/Eb4.mp3");
+    gameState.scene.load.audio('eb5', "assets/notes trimmed/Eb5.mp3");
+    gameState.scene.load.audio('f4', "assets/notes trimmed/F4.mp3");
+    gameState.scene.load.audio('f5', "assets/notes trimmed/F5.mp3");
+    gameState.scene.load.audio('g1', "assets/notes trimmed/G1.mp3");
+    gameState.scene.load.audio('gb1', "assets/notes trimmed/Gb1.mp3");
+>>>>>>> 2aa625e86e36f93bebb9df105f3ae56d603a80e9
 }
 
 function createNote(position) {
@@ -87,6 +111,7 @@ function createAnimations() {
   });
 }
 
+<<<<<<< HEAD
 function updateNote() {
   if (gameState.chord[gameState.currentNote].accidental == "flat") {
     //change note's sound
@@ -117,6 +142,33 @@ function updateNote() {
     //);
   }
   //playNote();
+=======
+
+
+function updateNote(){
+    if (gameState.chord[gameState.currentNote].accidental == 'flat'){
+        //change note's sound (need to change the way note's sound if change, see below)
+        gameState.chord[gameState.currentNote].sound = gameState.scene.sound.add(gameState.chord[gameState.currentNote].flatNote);
+
+        //BELOW:
+        /*gameState.chord[gameState.currentNote].sound = gameState.scene.sound.add(chord.notes[gameState.currentNote.name].flat);
+        */
+
+        //make accidental sprite visible and change note's accidental image
+        gameState.chord[gameState.currentNote].accidentalImage.sprite.setVisible(true);
+        gameState.chord[gameState.currentNote].accidentalImage.anims.play('flat', true);
+    } else if (gameState.chord[gameState.currentNote].accidental == 'natural'){
+        gameState.chord[gameState.currentNote].sound = gameState.scene.sound.add(gameState.chord[gameState.currentNote].name);
+        //make accidental sprite invisible
+        gameState.chord[gameState.currentNote].accidentalImage.sprite.setVisible(false);
+    } else if (gameState.chord[gameState.currentNote].accidental == 'sharp'){
+        gameState.chord[gameState.currentNote].sound = gameState.scene.sound.add(gameState.chord[gameState.currentNote].sharpNote);
+         //make accidental sprite visible and change note's accidental image
+        gameState.chord[gameState.currentNote].accidentalImage.sprite.setVisible(true);
+        gameState.chord[gameState.currentNote].accidentalImage.anims.play('sharp', true);
+    }
+    playNote();
+>>>>>>> 2aa625e86e36f93bebb9df105f3ae56d603a80e9
 }
 
 function getRandomIntInclusive(min, max) {
