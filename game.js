@@ -1,16 +1,5 @@
 const width = 900;
-const height = 500;
-// let gameState = {
-//     scene: "",
-//     chord:{
-//         first: {
-//             name: "",
-//             sound: "",
-//             image: "",
-//             accidntal: "",
-//         }
-//     }
-// } ;
+const height = 600;
 
 const config = {
   width: width,

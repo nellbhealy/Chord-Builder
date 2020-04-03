@@ -21,7 +21,7 @@ class SceneTemplate extends Phaser.Scene {
       .setScale(1);
 
     //create the chord
-    createChord("ab3");
+    createChord("eb4");
     console.log(gameState.chord);
 
     // wait a second, then ->
@@ -29,7 +29,6 @@ class SceneTemplate extends Phaser.Scene {
     let addListeners = function(scene) {
       scene.input.keyboard.on("keyup-SPACE", function(event) {
         changeAccidental();
-        console.log("TODO: call changeAccidental()");
       });
 
       scene.input.keyboard.on("keyup-LEFT", function(event) {
