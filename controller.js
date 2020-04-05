@@ -7,6 +7,7 @@ function loadImages() {
   gameState.scene.load.image("note-black", "assets/note-black.png");
   gameState.scene.load.image("black-flat", "assets/black-flat.png");
   gameState.scene.load.image("black-sharp", "assets/black-sharp.png");
+  gameState.scene.load.image("note-blue", "assets/note-blue.png");
 }
 
 /**
@@ -33,11 +34,18 @@ function loadAudio() {
   gameState.scene.load.audio("db5", "assets/notes trimmed/Db5.mp3");
   gameState.scene.load.audio("e4", "assets/notes trimmed/E4.mp3");
   gameState.scene.load.audio("eb4", "assets/notes trimmed/Eb4.mp3");
+  gameState.scene.load.audio("e5", "assets/notes trimmed/E5.mp3");
   gameState.scene.load.audio("eb5", "assets/notes trimmed/Eb5.mp3");
   gameState.scene.load.audio("f4", "assets/notes trimmed/F4.mp3");
   gameState.scene.load.audio("f5", "assets/notes trimmed/F5.mp3");
   gameState.scene.load.audio("g4", "assets/notes trimmed/G1.mp3");
   gameState.scene.load.audio("gb4", "assets/notes trimmed/Gb1.mp3");
+  gameState.scene.load.audio("g3", "assets/notes trimmed/G3.mp3");
+  gameState.scene.load.audio("g4", "assets/notes trimmed/G4.mp3");
+  gameState.scene.load.audio("g5", "assets/notes trimmed/G5.mp3");
+  gameState.scene.load.audio("gb3", "assets/notes trimmed/Gb3.mp3");
+  gameState.scene.load.audio("gb5", "assets/notes trimmed/Gb5.mp3");
+
 }
 
 /**
@@ -251,15 +259,19 @@ function noteLeft() {
   switch (gameState.currentNote) {
     case "first":
       gameState.currentNote = "seventh";
+      currentNoteColorChange("first", "seventh");
       break;
     case "third":
       gameState.currentNote = "first";
+      currentNoteColorChange("third", "first");
       break;
     case "fifth":
       gameState.currentNote = "third";
+      currentNoteColorChange("fifth", "third");
       break;
     case "seventh":
       gameState.currentNote = "fifth";
+      currentNoteColorChange("seventh", "fifth");
   }
   playNote();
 }
@@ -280,18 +292,42 @@ function noteRight() {
   switch (gameState.currentNote) {
     case "first":
       gameState.currentNote = "third";
+      currentNoteColorChange("first", "third");
       break;
     case "third":
       gameState.currentNote = "fifth";
+      currentNoteColorChange("third", "fifth");
       break;
     case "fifth":
       gameState.currentNote = "seventh";
+      currentNoteColorChange("fifth", "seventh");
       break;
     case "seventh":
       gameState.currentNote = "first";
+      currentNoteColorChange("seventh", "first");
       break;
   }
   playNote();
+}
+
+/**
+ * Changes the color of the current note to blue as a visual indication of the current note.
+ */
+
+function currentNoteColorChange(position_prev, position_current) {
+  let note_prev = gameState.chord[position_prev];
+  let note_current = gameState.chord[position_current];
+
+  note_prev.image.destroy();
+  note_current.image.destroy();
+
+  note_prev.image = gameState.scene.physics.add.sprite(x_values[position_prev], y_values[note_prev.name], "note-black")
+    .setScale(0.85);
+
+  note_current.image = gameState.scene.physics.add
+  .sprite(x_values[position_current], y_values[note_current.name], "note-blue")
+  .setScale(0.85);
+  
 }
 
 /**
