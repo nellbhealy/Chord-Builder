@@ -44,7 +44,9 @@ class SceneTemplate extends Phaser.Scene {
 
   update() {
     if (isCorrect()) {
-      let new_chord = getNewChord();
+      let new_chord = getNewMajorChord();
+      clearChord();
+      createChord(new_chord);
     }
   }
 }
