@@ -1,6 +1,6 @@
 let gameState = {
   scene: {
-    load: {}
+    load: {},
   },
   currentNote: "first",
   chord: {
@@ -10,36 +10,38 @@ let gameState = {
       image: "",
       sound: "",
       accidental: "",
-      accidentalImage: ""
+      accidentalImage: "",
     },
     third: {
       name: "",
       image: "",
       sound: "",
       accidental: "",
-      accidentalImage: ""
+      accidentalImage: "",
     },
     fifth: {
       name: "",
       image: "",
       sound: "",
       accidental: "",
-      accidentalImage: ""
+      accidentalImage: "",
     },
     seventh: {
       name: "",
       image: "",
       sound: "",
       accidental: "",
-      accidentalImage: ""
-    }
-  }
+      accidentalImage: "",
+    },
+  },
 };
 
 const y_values = {
-  a3: 480,
-  b3: 445,
-  c4: 410,
+  g3: 550,
+  a3: 515,
+  b3: 480,
+  c4: 445,
+  d4: 410,
   e4: 375,
   f4: 340,
   g4: 305,
@@ -48,12 +50,26 @@ const y_values = {
   c5: 201,
   d5: 165,
   e5: 134,
-  f5: 95
+  f5: 95,
+  g5: 60,
 };
 
 const x_values = {
   first: 300,
   third: 450,
   fifth: 600,
-  seventh: 750
+  seventh: 750,
 };
+
+function getNewMajorChord() {
+  let chords_left = Object.keys(majorChords).filter(
+    (key) => !(key in gameState.completed)
+  );
+  let index = Math.floor(Math.random() * chords_left.length);
+  if (chords_left.length == 0) {
+    return null;
+  } else {
+    gameState.completed[chords_left[index]];
+    return chords_left[index];
+  }
+}

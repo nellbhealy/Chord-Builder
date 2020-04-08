@@ -15,27 +15,25 @@ class SceneTemplate extends Phaser.Scene {
 
   create() {
     //add background image
-    this.add
-      .image(0, 0, "staff")
-      .setOrigin(0)
-      .setScale(1);
+    this.add.image(0, 0, "staff").setOrigin(0).setScale(1);
 
     //create the chord
-    createChord("eb4");
+    gameState.completed = {};
+    createChord("g3");
     console.log(gameState.chord);
 
     // wait a second, then ->
     // add event listeners and call appropriate functions
-    let addListeners = function(scene) {
-      scene.input.keyboard.on("keyup-SPACE", function(event) {
+    let addListeners = function (scene) {
+      scene.input.keyboard.on("keyup-SPACE", function (event) {
         changeAccidental();
       });
 
-      scene.input.keyboard.on("keyup-LEFT", function(event) {
+      scene.input.keyboard.on("keyup-LEFT", function (event) {
         noteLeft();
       });
 
-      scene.input.keyboard.on("keyup-RIGHT", function(event) {
+      scene.input.keyboard.on("keyup-RIGHT", function (event) {
         noteRight();
       });
     };
@@ -45,6 +43,8 @@ class SceneTemplate extends Phaser.Scene {
   }
 
   update() {
-    //maybe check for win?
+    if (isCorrect()) {
+      let new_chord = getNewChord();
+    }
   }
 }
