@@ -452,3 +452,39 @@ function clearChord() {
     gameState.chord.seventh.accidentalImage.destroy();
   }
 }
+
+function isCorrect(){
+  let isCorrect = true;
+
+  gameState.currentNote = "third";
+  if (!compareAccidental()) isCorrect = false;
+
+  gameState.currentNote = "fifth";
+  if (!compareAccidental()) isCorrect = false;
+
+  gameState.currentNote = "seventh";
+  if (!compareAccidental()) isCorrect = false;
+
+
+  //resetting currentNote to first
+  gameState.currentNote = "first";
+  if (isCorrect) {
+    
+  }
+
+}
+
+/**
+ Comapres the accidental of gameState's current note to the note's accidental as specified in chord.js. Returns true if the accidentals are the same.
+ */
+function compareAccidental() {
+  if (majorChords[gameState.chord.name][gameState.currentNote]=='undefined' && gameState.chord[gameState.currentNote].accidental!='natural'){
+    return false;
+  } else if (majorChords[gameState.chord.name][gameState.currentNote]=='sharp' && gameState.chord[gameState.currentNote].accidental!='sharp'){
+    return false;
+  } else if (majorChords[gameState.chord.name][gameState.currentNote]=='flat' && gameState.chord[gameState.currentNote].accidental!='flat'){
+    return false;
+  }
+
+  return true;
+}
