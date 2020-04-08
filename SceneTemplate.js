@@ -19,7 +19,7 @@ class SceneTemplate extends Phaser.Scene {
 
     //create the chord
     gameState.completed = {};
-    createChord("g3");
+    createChord(getNewMajorChord());
     console.log(gameState.chord);
 
     // wait a second, then ->
