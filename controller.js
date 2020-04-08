@@ -385,4 +385,41 @@ function playChord() {
   setTimeout(function() {
     gameState.chord.playing = false;
   }, 2000);
+
+}
+
+
+/**
+ * Clears the current chord and associated content.
+ *
+ * Deletes notes, accidentals, and sound.
+ *
+ * @return {null}
+ */
+function clearChord () {
+
+  gameState.chord.first.sound.destroy();
+  gameState.chord.third.sound.destroy();
+  gameState.chord.fifth.sound.destroy();
+  gameState.chord.seventh.sound.destroy();
+
+  gameState.chord.first.image.destroy();
+  gameState.chord.third.image.destroy();
+  gameState.chord.fifth.image.destroy();
+  gameState.chord.seventh.image.destroy();
+
+  if (gameState.chord.first.accidentalImage) {
+    gameState.chord.first.accidentalImage.destroy();
+  }
+  if (gameState.chord.third.accidentalImage) {
+    gameState.chord.third.accidentalImage.destroy();
+  }
+  if (gameState.chord.fifth.accidentalImage) {
+    gameState.chord.fifth.accidentalImage.destroy();
+  }
+  if (gameState.chord.seventh.accidentalImage) {
+    gameState.chord.seventh.accidentalImage.destroy();
+  }
+
+
 }
