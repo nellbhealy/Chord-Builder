@@ -1,4 +1,4 @@
-/**
+/*
  *  Preloads images into phaser scene for later use
  *
  *  @return {null}
@@ -23,6 +23,7 @@ function loadAudio() {
   gameState.scene.load.audio("a4", "assets/notes trimmed/A4.mp3");
   gameState.scene.load.audio("ab3", "assets/notes trimmed/Ab3.mp3");
   gameState.scene.load.audio("ab4", "assets/notes trimmed/Ab4.mp3");
+  gameState.scene.load.audio("ab5", "assets/notes trimmed/Ab5.mp3");
   gameState.scene.load.audio("b3", "assets/notes trimmed/B3.mp3");
   gameState.scene.load.audio("b4", "assets/notes trimmed/B4.mp3");
   gameState.scene.load.audio("bb3", "assets/notes trimmed/Bb3.mp3");
@@ -45,6 +46,8 @@ function loadAudio() {
   gameState.scene.load.audio("g5", "assets/notes trimmed/G5.mp3");
   gameState.scene.load.audio("gb3", "assets/notes trimmed/Gb3.mp3");
   gameState.scene.load.audio("gb5", "assets/notes trimmed/Gb5.mp3");
+  gameState.scene.load.audio("correct", "assets/correct.mp3");
+  gameState.scene.load.audio("incorrect", "assets/incorrect.mp3");
 }
 
 /**
@@ -419,6 +422,8 @@ function playChord() {
   setTimeout(function () {
     gameState.chord.playing = false;
   }, 2000);
+
+
 }
 
 /**
@@ -453,38 +458,60 @@ function clearChord() {
   }
 }
 
+/**
+ * Checks for correctness by comparing, note by note, gameState's chord to the chord as specified in chord.js
+ */
 function isCorrect(){
-  let isCorrect = true;
-
-  gameState.currentNote = "third";
-  if (!compareAccidental()) isCorrect = false;
-
-  gameState.currentNote = "fifth";
-  if (!compareAccidental()) isCorrect = false;
-
-  gameState.currentNote = "seventh";
-  if (!compareAccidental()) isCorrect = false;
-
-
-  //resetting currentNote to first
-  gameState.currentNote = "first";
-  if (isCorrect) {
-    
+  
+  //third accidental of correct chord is natural
+  if (majorChords[gameState.chord.name].thirdAccidental==undefined){
+    if(gameState.chord.third.accidental!='natural'){
+      return false;
+    }
+  } else {
+    //third accidental of correct chord is not natural
+    if (majorChords[gameState.chord.name].thirdAccidental != gameState.chord.third.accidental){
+      return false;
+    }
   }
+  
+  //fifth accidental of correct chord is natural
+  if (majorChords[gameState.chord.name].fifthAccidental==undefined){
+    if(gameState.chord.fifth.accidental!='natural'){
+      return false;
+    }
+  } else {
+    //fifth accidental of correct chord is not natural
+    if (majorChords[gameState.chord.name].fifthAccidental != gameState.chord.fifth.accidental){
+      return false;
+    }
+  }
+
+  //seventh accidental of correct chord is natural
+  if (majorChords[gameState.chord.name].seventhAccidental==undefined){
+    if(gameState.chord.seventh.accidental!='natural'){
+      return false;
+    }
+  } else {
+    //seventh accidental of correct chord is not natural
+    if (majorChords[gameState.chord.name].seventhAccidental != gameState.chord.seventh.accidental){
+      return false;
+    }
+  }
+
+  return true;
 
 }
 
 /**
- Comapres the accidental of gameState's current note to the note's accidental as specified in chord.js. Returns true if the accidentals are the same.
+ * Called when isCorrect() returns true. A chime is played to indicate correctness.
  */
-function compareAccidental() {
-  if (majorChords[gameState.chord.name][gameState.currentNote]=='undefined' && gameState.chord[gameState.currentNote].accidental!='natural'){
-    return false;
-  } else if (majorChords[gameState.chord.name][gameState.currentNote]=='sharp' && gameState.chord[gameState.currentNote].accidental!='sharp'){
-    return false;
-  } else if (majorChords[gameState.chord.name][gameState.currentNote]=='flat' && gameState.chord[gameState.currentNote].accidental!='flat'){
-    return false;
-  }
-
-  return true;
+function playCorrectSound(){
+  let correctChime = gameState.scene.sound.add('correct');
+  //timeout of 2500 so that chord can finish playing before chime is played
+  setTimeout(function () {
+    correctChime.play();
+  }, 2500);
+  
 }
+

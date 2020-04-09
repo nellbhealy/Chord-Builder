@@ -208,6 +208,3 @@ let notes = {
   }
 };
 
-let isCorrect = () => {
-  // gameState.chord;
-};
