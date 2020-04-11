@@ -63,18 +63,18 @@ function addLinesToStaff(position) {
   switch (gameState.chord[position].name) {
     case "g3":
     case "a3":
-      gameState.lines.push[
+      gameState.chord.lines.push(
         gameState.scene.physics.add
           .sprite(x, y_values["a3"] + y_offset, key)
           .setScale(0.65)
-      ];
+      );
     case "b3":
     case "c4":
-      gameState.lines.push[
+      gameState.chord.lines.push(
         gameState.scene.physics.add
           .sprite(x, y_values["c4"] + y_offset, key)
           .setScale(0.65)
-      ];
+      );
   }
 }
 
@@ -97,9 +97,10 @@ function createNote(position) {
   //use local variable for increased readability
   let note = gameState.chord[position];
   let key = position == "first" ? "note-blue" : "note-black";
+  let chords = gameState.type == "major" ? majorChords : minorChords;
 
   //set note's name
-  note.name = majorChords[gameState.chord.name][position];
+  note.name = chords[gameState.chord.name][position];
 
   //add note's image to screen
   note.image = gameState.scene.physics.add
@@ -129,7 +130,8 @@ function createNote(position) {
 function createChord(chord_name) {
   //create chord object inside of gameState
   gameState.chord = {};
-  gameState.lines = []; //used for images of extra lines
+  gameState.chord.lines = []; //used for images of extra lines
+  gameState.chord.correct = false;
   gameState.chord.name = chord_name;
   gameState.chord.playing = false;
 
@@ -234,7 +236,8 @@ function randomizeAccidental(position) {
  * @return {null}
  */
 function setFirstAccidental() {
-  let correct_chord = majorChords[gameState.chord.name];
+  let chords = gameState.type == "major" ? majorChords : minorChords;
+  let correct_chord = chords[gameState.chord.name];
   let first = gameState.chord.first;
 
   first.accidental =
@@ -256,7 +259,7 @@ function setFirstAccidental() {
  * @return {null}
  */
 function changeAccidental() {
-  if (gameState.currentNote == "first") return;
+  if (gameState.currentNote == "first" || gameState.chord.correct) return;
 
   let note = gameState.chord[gameState.currentNote];
 
@@ -274,6 +277,7 @@ function changeAccidental() {
 
   updateNote();
   note.sound.play();
+  if (isCorrect()) switchChord();
 }
 
 /**
@@ -289,6 +293,7 @@ function changeAccidental() {
  * @return {null}
  */
 function noteLeft() {
+  if (gameState.chord.correct) return;
   switch (gameState.currentNote) {
     case "first":
       gameState.currentNote = "seventh";
@@ -322,6 +327,7 @@ function noteLeft() {
  * @return {null}
  */
 function noteRight() {
+  if (gameState.chord.correct) return;
   switch (gameState.currentNote) {
     case "first":
       gameState.currentNote = "third";
@@ -422,8 +428,6 @@ function playChord() {
   setTimeout(function () {
     gameState.chord.playing = false;
   }, 2000);
-
-
 }
 
 /**
@@ -447,71 +451,104 @@ function clearChord() {
   if (gameState.chord.first.accidentalImage) {
     gameState.chord.first.accidentalImage.destroy();
   }
+
   if (gameState.chord.third.accidentalImage) {
     gameState.chord.third.accidentalImage.destroy();
   }
+
   if (gameState.chord.fifth.accidentalImage) {
     gameState.chord.fifth.accidentalImage.destroy();
   }
+
   if (gameState.chord.seventh.accidentalImage) {
     gameState.chord.seventh.accidentalImage.destroy();
+  }
+
+  if (gameState.chord.lines.length > 0) {
+    let { lines } = gameState.chord;
+    lines.map((line) => line.destroy());
   }
 }
 
 /**
  * Checks for correctness by comparing, note by note, gameState's chord to the chord as specified in chord.js
  */
-function isCorrect(){
-  
+function isCorrect() {
+  let chords = gameState.type == "major" ? majorChords : minorChords;
   //third accidental of correct chord is natural
-  if (majorChords[gameState.chord.name].thirdAccidental==undefined){
-    if(gameState.chord.third.accidental!='natural'){
+  if (chords[gameState.chord.name].thirdAccidental == undefined) {
+    if (gameState.chord.third.accidental != "natural") {
       return false;
     }
   } else {
     //third accidental of correct chord is not natural
-    if (majorChords[gameState.chord.name].thirdAccidental != gameState.chord.third.accidental){
+    if (
+      chords[gameState.chord.name].thirdAccidental !=
+      gameState.chord.third.accidental
+    ) {
       return false;
     }
   }
-  
+
   //fifth accidental of correct chord is natural
-  if (majorChords[gameState.chord.name].fifthAccidental==undefined){
-    if(gameState.chord.fifth.accidental!='natural'){
+  if (chords[gameState.chord.name].fifthAccidental == undefined) {
+    if (gameState.chord.fifth.accidental != "natural") {
       return false;
     }
   } else {
     //fifth accidental of correct chord is not natural
-    if (majorChords[gameState.chord.name].fifthAccidental != gameState.chord.fifth.accidental){
+    if (
+      chords[gameState.chord.name].fifthAccidental !=
+      gameState.chord.fifth.accidental
+    ) {
       return false;
     }
   }
 
   //seventh accidental of correct chord is natural
-  if (majorChords[gameState.chord.name].seventhAccidental==undefined){
-    if(gameState.chord.seventh.accidental!='natural'){
+  if (chords[gameState.chord.name].seventhAccidental == undefined) {
+    if (gameState.chord.seventh.accidental != "natural") {
       return false;
     }
   } else {
     //seventh accidental of correct chord is not natural
-    if (majorChords[gameState.chord.name].seventhAccidental != gameState.chord.seventh.accidental){
+    if (
+      chords[gameState.chord.name].seventhAccidental !=
+      gameState.chord.seventh.accidental
+    ) {
       return false;
     }
   }
 
   return true;
-
 }
 
 /**
  * Called when isCorrect() returns true. A chime is played to indicate correctness.
  */
-function playCorrectSound(){
-  let correctChime = gameState.scene.sound.add('correct');
-  //timeout of 2500 so that chord can finish playing before chime is played
-  setTimeout(function () {
-    correctChime.play();
-  }, 2500);
-  
+function playCorrectSound() {
+  let correctChime = gameState.scene.sound.add("correct");
+  correctChime.play();
 }
 
+/**
+ * Does everything that needs to happen once the current chord is correct,
+ */
+function switchChord() {
+  // Used to freeze game while chord switches
+  gameState.chord.correct = true;
+
+  // Timeout for 750ms so note can finish playing
+  setTimeout(function () {
+    playChord();
+  }, 750);
+
+  //Timeout for 3s so chord can finish playing
+  setTimeout(function () {
+    playCorrectSound();
+    clearChord();
+    let new_chord = getNewChord();
+    console.log(new_chord);
+    createChord(new_chord);
+  }, 3000);
+}

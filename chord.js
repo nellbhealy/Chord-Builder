@@ -3,7 +3,7 @@ let majorChords = {
     first: "c4",
     third: "e4",
     fifth: "g4",
-    seventh: "c5"
+    seventh: "c5",
   },
 
   db4: {
@@ -13,7 +13,7 @@ let majorChords = {
     fifth: "a4",
     fifthAccidental: "flat",
     seventh: "d5",
-    seventhAccidental: "flat"
+    seventhAccidental: "flat",
   },
 
   d4: {
@@ -21,7 +21,7 @@ let majorChords = {
     third: "f4",
     thirdAccidental: "sharp",
     fifth: "a4",
-    seventh: "d5"
+    seventh: "d5",
   },
 
   eb4: {
@@ -31,21 +31,21 @@ let majorChords = {
     fifth: "b4",
     fifthAccidental: "flat",
     seventh: "e5",
-    seventhAccidental: "flat"
+    seventhAccidental: "flat",
   },
 
   f4: {
     first: "f4",
     third: "a4",
     fifth: "c5",
-    seventh: "f5"
+    seventh: "f5",
   },
 
   g4: {
     first: "g4",
     third: "b4",
     fifth: "d5",
-    seventh: "g5"
+    seventh: "g5",
   },
 
   gb4: {
@@ -56,7 +56,7 @@ let majorChords = {
     fifth: "d5",
     fifthAccidental: "flat",
     seventh: "g5",
-    seventhAccidental: "flat"
+    seventhAccidental: "flat",
   },
 
   ab3: {
@@ -66,7 +66,7 @@ let majorChords = {
     fifth: "e4",
     fifthAccidental: "flat",
     seventh: "a4",
-    seventhAccidental: "flat"
+    seventhAccidental: "flat",
   },
 
   bb4: {
@@ -75,8 +75,8 @@ let majorChords = {
     third: "d4",
     fifth: "f4",
     seventh: "b4",
-    seventhAccidental: "flat"
-  }
+    seventhAccidental: "flat",
+  },
 };
 
 let minorChords = {
@@ -84,15 +84,15 @@ let minorChords = {
     first: "a3",
     third: "c4",
     fifth: "e4",
-    seventh: "a4"
+    seventh: "a4",
   },
 
   g4: {
     first: "g3",
-    third: "b4",
+    third: "b3",
     thirdAccidental: "flat",
     fifth: "d4",
-    seventh: "g4"
+    seventh: "g4",
   },
 
   bb3: {
@@ -102,7 +102,7 @@ let minorChords = {
     thirdAccidental: "flat",
     fifth: "f4",
     seventh: "b4",
-    seventhAccidental: "flat"
+    seventhAccidental: "flat",
   },
 
   c4: {
@@ -110,14 +110,14 @@ let minorChords = {
     third: "e4",
     thirdAccidental: "flat",
     fifth: "g4",
-    seventh: "c5"
+    seventh: "c5",
   },
 
   d4: {
     first: "d4",
     third: "f4",
     fifth: "a4",
-    seventh: "d5"
+    seventh: "d5",
   },
 
   f4: {
@@ -125,8 +125,8 @@ let minorChords = {
     third: "a4",
     thirdAccidental: "flat",
     fifth: "c5",
-    seventh: "f5"
-  }
+    seventh: "f5",
+  },
 };
 
 //do we have the audio for the note g?? am i blind?
@@ -134,77 +134,76 @@ let minorChords = {
 let notes = {
   a3: {
     flat: "ab3",
-    sharp: "bb3"
+    sharp: "bb3",
   },
 
   a4: {
     flat: "ab4",
-    sharp: "bb4"
+    sharp: "bb4",
   },
 
   b3: {
     flat: "bb3",
-    sharp: "c4"
+    sharp: "c4",
   },
 
   b4: {
     flat: "bb4",
-    sharp: "c5"
+    sharp: "c5",
   },
 
   b5: {
     flat: "bb5",
-    sharp: "c6"
+    sharp: "c6",
   },
 
   c4: {
     flat: "b3",
-    sharp: "db4"
+    sharp: "db4",
   },
 
   c5: {
     flat: "b4",
-    sharp: "db5"
+    sharp: "db5",
   },
 
   d4: {
     flat: "db4",
-    sharp: "eb4"
+    sharp: "eb4",
   },
 
   d5: {
     flat: "db5",
-    sharp: "eb5"
+    sharp: "eb5",
   },
 
   e4: {
     flat: "eb4",
-    sharp: "f4"
+    sharp: "f4",
   },
 
   e5: {
     flat: "eb5",
-    sharp: "f5"
+    sharp: "f5",
   },
 
   f4: {
     flat: "e4",
-    sharp: "gb4"
+    sharp: "gb4",
   },
 
   f5: {
     flat: "e5",
-    sharp: "gb5"
+    sharp: "gb5",
   },
 
   g4: {
     flat: "gb4",
-    sharp: "ab4"
+    sharp: "ab4",
   },
 
   g5: {
     flat: "gb5",
-    sharp: "ab5"
-  }
+    sharp: "ab5",
+  },
 };
-

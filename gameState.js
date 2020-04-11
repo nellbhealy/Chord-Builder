@@ -61,15 +61,38 @@ const x_values = {
   seventh: 750,
 };
 
-function getNewMajorChord() {
-  let chords_left = Object.keys(majorChords).filter(
-    (key) => !(key in gameState.completed)
+function getNewMinorChord() {
+  gameState.type = "minor";
+  //get unplayed minor chords
+  let chords_remaining = Object.keys(minorChords).filter(
+    (key) => !(key in gameState.completed.minor)
   );
-  let index = Math.floor(Math.random() * chords_left.length);
-  if (chords_left.length == 0) {
-    return null;
+
+  if (chords_remaining.length > 0) {
+    let index = Math.floor(Math.random() * chords_remaining.length);
+    gameState.completed.minor[chords_remaining[index]] = true;
+    return chords_remaining[index];
   } else {
-    gameState.completed[chords_left[index]];
-    return chords_left[index];
+    return null;
   }
+}
+
+function getNewMajorChord() {
+  //get the major chords that haven't been played
+  let chords_remaining = Object.keys(majorChords).filter(
+    (key) => !(key in gameState.completed.major)
+  );
+
+  if (chords_remaining.length > 0) {
+    let index = Math.floor(Math.random() * chords_remaining.length);
+    gameState.completed.major[chords_remaining[index]] = true;
+    return chords_remaining[index];
+  } else {
+    return getNewMinorChord();
+  }
+}
+
+function getNewChord() {
+  if (gameState.type == "major") return getNewMajorChord();
+  else return getNewMinorChord();
 }
