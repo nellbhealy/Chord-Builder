@@ -143,6 +143,12 @@ function createChord(chord_name) {
 
   //set current note back to first for gameplay
   gameState.currentNote = "first";
+
+  //if chord is already correct, restart and try again
+  if (isCorrect()) {
+    clearChord();
+    createChord(chord_name);
+  }
 }
 
 /**
@@ -293,7 +299,7 @@ function changeAccidental() {
  * @return {null}
  */
 function noteLeft() {
-  if (gameState.chord.correct) return;
+  if (gameState.chord.correct || gameState.chord.playing) return;
   switch (gameState.currentNote) {
     case "first":
       gameState.currentNote = "seventh";
@@ -327,7 +333,7 @@ function noteLeft() {
  * @return {null}
  */
 function noteRight() {
-  if (gameState.chord.correct) return;
+  if (gameState.chord.correct || gameState.chord.playing) return;
   switch (gameState.currentNote) {
     case "first":
       gameState.currentNote = "third";
@@ -548,7 +554,10 @@ function switchChord() {
     playCorrectSound();
     clearChord();
     let new_chord = getNewChord();
-    console.log(new_chord);
     createChord(new_chord);
   }, 3000);
+
+  setTimeout(function () {
+    playChord();
+  }, 4000);
 }
