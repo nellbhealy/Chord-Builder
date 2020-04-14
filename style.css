@@ -14,6 +14,32 @@
     text-align:center;
 }
 
+.instructions-header {
+    font-family: "Verdana";
+    font-size : 22px;
+    color : #000000;
+    text-align : center;
+}
+
+
+.instructions-title {
+    font-family:   "Courier New";
+    font-size : 36px;
+    color : #40e7df;
+    text-align: center;
+
+}
+
+
+.hidden {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
 
 
 /*the main container*/

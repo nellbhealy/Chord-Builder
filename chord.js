@@ -129,7 +129,81 @@ let minorChords = {
   },
 };
 
-//do we have the audio for the note g?? am i blind?
+let diminishedChords = {
+  c4 : {
+    first : "c4",
+    third : "e4",
+    thirdAccidental : "flat",
+    fifth : "g4",
+    fifthAccidental : "flat",
+    seventh : "c5"
+  },
+
+  d4 : {
+    first : "d4",
+    third : "f4",
+    fifth : "a5",
+    fifthAccidental : "flat",
+    seventh : "d5"
+  },
+
+  eb4 : {
+    first : "e4",
+    firstAccidental : "flat",
+    third : "g4",
+    thirdAccidental : "flat",
+    fifth : "a5",
+    seventh : "e5",
+    seventhAccidental : "flat"
+  },
+
+  e4 : {
+    first : "e4",
+    third : "g4",
+    fifth : "b5",
+    fifthAccidental : "flat",
+    seventh : "e5"
+  },
+
+  f4 : {
+    first : "f4",
+    third : "a5",
+    thirdAccidental : "flat",
+    fifth : "b5",
+    seventh : "f5"
+  },
+
+  g3 : {
+    first : "g3",
+    third : "b4",
+    thirdAccidental : "flat",
+    fifth : "d4",
+    fifthAccidental : "flat",
+    seventh : "g4"
+  },
+
+  a3 : {
+    first : "a4",
+    third : "c4",
+    fifth : "e4",
+    fifthAccidental : "flat",
+    seventh : "a5"
+  },
+
+  bb4 : {
+    first : "b4",
+    firstAccidental : "flat",
+    third : "d4",
+    thirdAccidental : "flat",
+    fifth : "e4",
+    seventh : "b5",
+    seventhAccidental : "flat"
+
+  }
+
+
+}
+
 
 let notes = {
   a3: {
