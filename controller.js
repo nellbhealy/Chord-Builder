@@ -149,6 +149,18 @@ function createChord(chord_name) {
     clearChord();
     createChord(chord_name);
   }
+
+  //Change text
+  let root = chord_name.toUpperCase().charAt(0);
+  let accidental =
+    chord_name.charAt(1) == "b"
+      ? "Flat"
+      : chord_name.charAt(1) == "#"
+      ? "Sharp"
+      : "";
+  let type = gameState.type.toUpperCase().charAt(0) + gameState.type.slice(1);
+
+  $("#chord").text(`${root} ${accidental} ${type}`);
 }
 
 /**

@@ -21,21 +21,23 @@
     <!--Header Section 2-->
     <!--Added section 2 to make this content make sense to be chronologically read by a screen reader.-->
     <header h2>
-      <div class = "instructions-header">
-        <div class = "instructions-title">
-          <br>
+      <div class="instructions-header">
+        <div class="instructions-title">
+          <br />
           Instructions:
         </div>
         To start the game, press the space bar.
-        <br>
-        To switch between different notes in the chord, press the left and right arrow keys.
-        <br>
+        <br />
+        To switch between different notes in the chord, press the left and right
+        arrow keys.
+        <br />
         To switch between note accidentals, press the space bar.
-        <br>
+        <br />
       </div>
-      <div class = "hidden">
+      <div class="hidden">
         <!--This is not visible on screen, but a screen reader should be able to read it to the user.-->
-        Once you correctly form a chord, you will hear the chord played back, a confirmation sound, and then the next chord will be loaded and playable.
+        Once you correctly form a chord, you will hear the chord played back, a
+        confirmation sound, and then the next chord will be loaded and playable.
       </div>
     </header>
 
@@ -54,9 +56,13 @@
       </div>
       <!--End sidebar-->
 
+      <!--Announce chord being played-->
+      <h3 id="chord"></h3>
+
       <!--Main gameplay column-->
       <div id="gameWindow">
         <script src="https://cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="./chord.js"></script>
         <script src="./gameState.js"></script>
         <script src="./SceneTemplate.js"></script>
