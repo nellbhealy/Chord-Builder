@@ -14,7 +14,6 @@
     <!--Header Section-->
     <header h1>
       <div class="header1">Chord Builder</div>
-      <div class="header2">Max needs help learning the chords!</div>
     </header>
     <!--End Header Section-->
 
@@ -41,37 +40,20 @@
       </div>
     </header>
 
-    <!--End Header Section 2-->
-
-    <!--flexible container-->
-    <div class="flex_container">
-      <!--Sidebar-->
-      <div class="sidebar_left">
-        <div class="difficulty_question">
-          What type of chords do you want to play?
-        </div>
-        <div class="difficulty">Easy Chords</div>
-        <div class="difficulty">Medium Chords</div>
-        <div class="difficulty">Hard Chords</div>
-      </div>
-      <!--End sidebar-->
-
+    <div class="container">
       <!--Announce chord being played-->
-      <h3 id="chord"></h3>
-
-      <!--Main gameplay column-->
+      <h2 id="chord" aria-live="polite"></h2>
+           <!--Main gameplay column-->
       <div id="gameWindow">
-        <script src="https://cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="./chord.js"></script>
-        <script src="./gameState.js"></script>
-        <script src="./SceneTemplate.js"></script>
-        <script src="./controller.js"></script>
-        <script src="./game.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.min.js"></script>
+          <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+          <script src="./chord.js"></script>
+          <script src="./gameState.js"></script>
+          <script src="./SceneTemplate.js"></script>
+          <script src="./controller.js"></script>
+          <script src="./game.js"></script>
       </div>
-      <script>
-        //prevent page from scrolling from arrow keys or space
-      </script>
     </div>
+   
   </body>
 </html>
