@@ -1,58 +1,58 @@
 .header1 {
-    font-family: "Courier New";
-    font-size:60px;
-    color:#40e7df;
-    text-align:center;
+  font-family: "Courier New";
+  font-size: 60px;
+  color: #40e7df;
+  text-align: center;
 }
 
 .header2 {
-    font-family: "Verdana";
-    font-size:30px;
-    color:#000000;
-    text-align:center;
+  font-family: "Verdana";
+  font-size: 30px;
+  color: #000000;
+  text-align: center;
 }
 
 .instructions-header {
-    font-family: "Verdana";
-    font-size : 22px;
-    color : #000000;
-    text-align : center;
+  font-family: "Verdana";
+  font-size: 22px;
+  color: #000000;
+  text-align: center;
 }
-
 
 .instructions-title {
-    font-family:   "Courier New";
-    font-size : 36px;
-    color : #40e7df;
-    text-align: center;
-
+  font-family: "Courier New";
+  font-size: 36px;
+  color: #40e7df;
+  text-align: center;
 }
-
 
 .hidden {
-    position:absolute;
-    left:-10000px;
-    top:auto;
-    width:1px;
-    height:1px;
-    overflow:hidden;
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
-
 .container {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 #gameWindow {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
-
+canvas {
+  position: relative;
+  left: 50%;
+  margin-left: -450px;
+}
 
 #chord {
-    color : #40e7df;
-    font-family: "Courier New";
-    font-size: 30px;
-    text-align: center;
+  color: #40e7df;
+  font-family: "Courier New";
+  font-size: 30px;
+  text-align: center;
 }
