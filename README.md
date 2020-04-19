@@ -10,11 +10,13 @@ To navigate between different notes, use the left and right arrow keys. To chang
 
 When the player has successfully corrected the chord, they will move on to another chord, and the gameplay starts again.
 
+## How To Play
+
+Go to [lwbecker.github.io/Chord-Builder](https://lwbecker.github.io/Chord-Builder/)
+
 ## Authors and Acknowledgements
 
 This project was created by Liam Becker, Kirsten Freeman, and Anna Serenius.
 We would like to acknowledge the University of Iowa's Electronic Music Studios. They have created an online library of piano recordings, and we are very grateful for their decision to make this collection downloadable for free. 
 
-## How To Play
 
-Go to [lwbecker.github.io/Chord-Builder](https://lwbecker.github.io/Chord-Builder/)
