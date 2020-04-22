@@ -573,3 +573,8 @@ function switchChord() {
     playChord();
   }, 4000);
 }
+
+
+//Setting tabs for the headers in our code so it's accessible with a screen reader:
+document.getElementById("our-title").tabIndex = "1";
+document.getElementById("instructions").tabIndex = "2";
