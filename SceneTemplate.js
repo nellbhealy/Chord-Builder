@@ -39,6 +39,10 @@ class SceneTemplate extends Phaser.Scene {
       scene.input.keyboard.on("keyup-RIGHT", function (event) {
         noteRight();
       });
+
+      scene.input.keyboard.on("keyup-ENTER", function (event) {
+        playCorrectChord();
+      });
     };
 
     setTimeout(addListeners(this), 1000);
