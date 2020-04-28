@@ -582,143 +582,51 @@ function switchChord() {
  * @return {null}
  */
 function playCorrectChord() {
+  //object used to store sounds
+  let sounds = {};
 
-  let thirdAcc;
-  let fifthAcc;
-  let seventhAcc;
-  
-  if (gameState.type == 'major') {  
-  
-    if (gameState.chord.name == 'c4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("e4");
-      fifthAcc = gameState.scene.sound.add("g4");
-      seventhAcc = gameState.scene.sound.add("c5");
-    }  
-  
-    else if (gameState.chord.name == 'db4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("f4");
-      fifthAcc = gameState.scene.sound.add("ab4");
-      seventhAcc = gameState.scene.sound.add("db5");
-    }  
-  
-    else if (gameState.chord.name == 'd4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("gb4");
-      fifthAcc = gameState.scene.sound.add("a4");
-      seventhAcc = gameState.scene.sound.add("d5");
-    }  
-  
-    else if (gameState.chord.name == 'eb4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("g4");
-      fifthAcc = gameState.scene.sound.add("bb4");
-      seventhAcc = gameState.scene.sound.add("eb5");
-    } 
-  
-    else if (gameState.chord.name == 'f4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("a4");
-      fifthAcc = gameState.scene.sound.add("c5");
-      seventhAcc = gameState.scene.sound.add("f5");
-    } 
-  
-    else if (gameState.chord.name == 'gb4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("bb4");
-      fifthAcc = gameState.scene.sound.add("db5");
-      seventhAcc = gameState.scene.sound.add("gb5");
-    }
-  
-    else if (gameState.chord.name == 'g4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("b4");
-      fifthAcc = gameState.scene.sound.add("d5");
-      seventhAcc = gameState.scene.sound.add("g5");
-    }
-  
-    else if (gameState.chord.name == 'ab3') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("c4");
-      fifthAcc = gameState.scene.sound.add("eb4");
-      seventhAcc = gameState.scene.sound.add("ab4");
-    }
-  
-    else if (gameState.chord.name == 'bb4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("d4");
-      fifthAcc = gameState.scene.sound.add("f4");
-      seventhAcc = gameState.scene.sound.add("bb4");
-    }
-  }
-  
-  else if (gameState.type == 'minor') {
-  
-    if (gameState.chord.name == 'a3') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("c4");
-      fifthAcc = gameState.scene.sound.add("e4");
-      seventhAcc = gameState.scene.sound.add("a5");
-    }  
-  
-    else if (gameState.chord.name == 'g4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("bb4");
-      fifthAcc = gameState.scene.sound.add("d4");
-      seventhAcc = gameState.scene.sound.add("g4");
-    }
-  
-    else if (gameState.chord.name == 'bb3') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("db4");
-      fifthAcc = gameState.scene.sound.add("f4");
-      seventhAcc = gameState.scene.sound.add("bb4");
-    }
-  
-    else if (gameState.chord.name == 'c4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("eb4");
-      fifthAcc = gameState.scene.sound.add("g4");
-      seventhAcc = gameState.scene.sound.add("c5");
-    }
-  
-    else if (gameState.chord.name == 'd4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("f4");
-      fifthAcc = gameState.scene.sound.add("a4");
-      seventhAcc = gameState.scene.sound.add("d5");
-    }
-  
-    else if (gameState.chord.name == 'f4') {
-      gameState.chord.first.sound.play();
-      thirdAcc = gameState.scene.sound.add("ab4");
-      fifthAcc = gameState.scene.sound.add("c5");
-      seventhAcc = gameState.scene.sound.add("f5");
-    }
-  
-  }
-    
-      setTimeout(function () {
-        thirdAcc.play();
-      }, 250);
-      setTimeout(function () {
-        fifthAcc.play();
-      }, 500);
-      setTimeout(function () {
-        seventhAcc.play();
-      }, 750);
-      setTimeout(function () {
-        gameState.chord.first.sound.play();
-        thirdAcc.play();
-        fifthAcc.play();
-        seventhAcc.play();
-      }, 1250);
-    
-  
-  
-  }
+  //get the correct chord
+  let correct_chords =
+    gameState.type == "major"
+      ? majorChords
+      : gameState.type == "minor"
+      ? minorChords
+      : diminishedChords;
+  let correct_chord = correct_chords[gameState.chord.name];
 
+  //add sounds to sounds object
+  let note_positions = ["first", "third", "fifth", "seventh"];
+  note_positions.map((position) => {
+    if (correct_chord[position + "Accidental"]) {
+      let note_name = correct_chord[position];
+      let note =
+        correct_chord[position + "Accidental"] == "flat"
+          ? notes[note_name].flat
+          : notes[note_name].sharp;
+      sounds[position] = gameState.scene.sound.add(note);
+    } else {
+      sounds[position] = gameState.scene.sound.add(correct_chord[position]);
+    }
+  });
+
+  sounds.first.play();
+  setTimeout(function () {
+    sounds.third.play();
+  }, 250);
+  setTimeout(function () {
+    sounds.fifth.play();
+  }, 500);
+  setTimeout(function () {
+    sounds.seventh.play();
+  }, 750);
+  setTimeout(function () {
+    //gameState.chord.first.sound.play();
+    sounds.first.play();
+    sounds.third.play();
+    sounds.fifth.play();
+    sounds.seventh.play();
+  }, 1250);
+}
 
 //Setting tabs for the headers in our code so it's accessible with a screen reader:
 document.getElementById("our-title").tabIndex = "1";
