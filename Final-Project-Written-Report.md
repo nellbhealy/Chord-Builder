@@ -1,4 +1,4 @@
-Chord Builder Game Description
+Chord Builder Written Report
 Created by: Liam Becker, Anna Serenius, and Kirsten Freeman
 
 Intended Audience:
