@@ -9,6 +9,7 @@ How to Begin Gameplay:
 To start the game, press the spacebar. The staff will appear on screen, and you will be given the name of a chord, along with the four notes that make up the chord - but wait, some of the notes may be incorrect! After the notes are loaded onto the staff, each will be played in succession, and then all the notes will be played together. 
 To change between the notes of the chord, press the left and right arrow keys. To change a note’s accidental, use the spacebar. 
 Whenever the user returns to the root note of the chord, the chord will be played in succession, the same way it was at the beginning of the game. 
+To hear the correct notes of the chord being played, press the Enter key. 
 Once the user has all the notes in the chord correctly placed with the correct accidentals, the chord will be played in succession again, and then the user will be given a new chord to play.
 
 Objective of the Game:
