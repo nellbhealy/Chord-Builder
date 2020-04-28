@@ -97,7 +97,12 @@ function createNote(position) {
   //use local variable for increased readability
   let note = gameState.chord[position];
   let key = position == "first" ? "note-blue" : "note-black";
-  let chords = gameState.type == "major" ? majorChords : minorChords;
+  let chords =
+    gameState.type == "major"
+      ? majorChords
+      : gameState.type == "minor"
+      ? minorChords
+      : diminishedChords;
 
   //set note's name
   note.name = chords[gameState.chord.name][position];
@@ -254,7 +259,12 @@ function randomizeAccidental(position) {
  * @return {null}
  */
 function setFirstAccidental() {
-  let chords = gameState.type == "major" ? majorChords : minorChords;
+  let chords =
+    gameState.type == "major"
+      ? majorChords
+      : gameState.type == "minor"
+      ? minorChords
+      : diminishedChords;
   let correct_chord = chords[gameState.chord.name];
   let first = gameState.chord.first;
 
@@ -492,7 +502,13 @@ function clearChord() {
  * Checks for correctness by comparing, note by note, gameState's chord to the chord as specified in chord.js
  */
 function isCorrect() {
-  let chords = gameState.type == "major" ? majorChords : minorChords;
+  let chords =
+    gameState.type == "major"
+      ? majorChords
+      : gameState.type == "minor"
+      ? minorChords
+      : diminishedChords;
+
   //third accidental of correct chord is natural
   if (chords[gameState.chord.name].thirdAccidental == undefined) {
     if (gameState.chord.third.accidental != "natural") {

@@ -21,9 +21,9 @@ class SceneTemplate extends Phaser.Scene {
     gameState.completed = {};
     gameState.completed.major = {};
     gameState.completed.minor = {};
+    gameState.completed.diminished = {};
     gameState.type = "major";
     createChord(getNewChord());
-    console.log(gameState.chord);
 
     // wait a second, then ->
     // add event listeners and call appropriate functions

@@ -61,6 +61,8 @@ const x_values = {
   seventh: 750,
 };
 
+function getNewDiminishedChord() {}
+
 function getNewMinorChord() {
   gameState.type = "minor";
   //get unplayed minor chords
@@ -93,6 +95,27 @@ function getNewMajorChord() {
 }
 
 function getNewChord() {
-  if (gameState.type == "major") return getNewMajorChord();
-  else return getNewMinorChord();
+  //if (gameState.type == "major") return getNewMajorChord();
+  //else return getNewMinorChord();
+  let { type } = gameState;
+  let chords =
+    type == "major"
+      ? majorChords
+      : type == "minor"
+      ? minorChords
+      : diminishedChords;
+  let chords_remaining = Object.keys(chords).filter(
+    (key) => !(key in gameState.completed[type])
+  );
+
+  if (chords_remaining.length > 0) {
+    let index = Math.floor(Math.random() * chords_remaining.length);
+    gameState.completed[type][chords_remaining[index]] = true;
+    return chords_remaining[index];
+  } else {
+    gameState.type =
+      type == "major" ? "minor" : type == "minor" ? "diminished" : "major";
+    gameState.completed[gameState.type] = {};
+    return getNewChord();
+  }
 }

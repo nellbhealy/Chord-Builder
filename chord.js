@@ -130,80 +130,76 @@ let minorChords = {
 };
 
 let diminishedChords = {
-  c4 : {
-    first : "c4",
-    third : "e4",
-    thirdAccidental : "flat",
-    fifth : "g4",
-    fifthAccidental : "flat",
-    seventh : "c5"
+  c4: {
+    first: "c4",
+    third: "e4",
+    thirdAccidental: "flat",
+    fifth: "g4",
+    fifthAccidental: "flat",
+    seventh: "c5",
   },
 
-  d4 : {
-    first : "d4",
-    third : "f4",
-    fifth : "a5",
-    fifthAccidental : "flat",
-    seventh : "d5"
+  d4: {
+    first: "d4",
+    third: "f4",
+    fifth: "a4",
+    fifthAccidental: "flat",
+    seventh: "d5",
   },
 
-  eb4 : {
-    first : "e4",
-    firstAccidental : "flat",
-    third : "g4",
-    thirdAccidental : "flat",
-    fifth : "a5",
-    seventh : "e5",
-    seventhAccidental : "flat"
+  eb4: {
+    first: "e4",
+    firstAccidental: "flat",
+    third: "g4",
+    thirdAccidental: "flat",
+    fifth: "a4",
+    seventh: "e5",
+    seventhAccidental: "flat",
   },
 
-  e4 : {
-    first : "e4",
-    third : "g4",
-    fifth : "b5",
-    fifthAccidental : "flat",
-    seventh : "e5"
+  e4: {
+    first: "e4",
+    third: "g4",
+    fifth: "b4",
+    fifthAccidental: "flat",
+    seventh: "e5",
   },
 
-  f4 : {
-    first : "f4",
-    third : "a5",
-    thirdAccidental : "flat",
-    fifth : "b5",
-    seventh : "f5"
+  f4: {
+    first: "f4",
+    third: "a4",
+    thirdAccidental: "flat",
+    fifth: "b4",
+    seventh: "f5",
   },
 
-  g3 : {
-    first : "g3",
-    third : "b4",
-    thirdAccidental : "flat",
-    fifth : "d4",
-    fifthAccidental : "flat",
-    seventh : "g4"
+  g3: {
+    first: "g3",
+    third: "b3",
+    thirdAccidental: "flat",
+    fifth: "d4",
+    fifthAccidental: "flat",
+    seventh: "g4",
   },
 
-  a3 : {
-    first : "a4",
-    third : "c4",
-    fifth : "e4",
-    fifthAccidental : "flat",
-    seventh : "a5"
+  a3: {
+    first: "a3",
+    third: "c4",
+    fifth: "e4",
+    fifthAccidental: "flat",
+    seventh: "a4",
   },
 
-  bb4 : {
-    first : "b4",
-    firstAccidental : "flat",
-    third : "d4",
-    thirdAccidental : "flat",
-    fifth : "e4",
-    seventh : "b5",
-    seventhAccidental : "flat"
-
-  }
-
-
-}
-
+  bb3: {
+    first: "b3",
+    firstAccidental: "flat",
+    third: "d4",
+    thirdAccidental: "flat",
+    fifth: "e4",
+    seventh: "b4",
+    seventhAccidental: "flat",
+  },
+};
 
 let notes = {
   a3: {
