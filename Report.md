@@ -20,3 +20,6 @@ During the process of creating this game, we encountered issues with the mp3 fil
 
 Future Work:
 If we were to keep adding onto this project, we would love to come up with a way for kids to learn notes to different songs, like "Twinkle Twinkle Little Star", "Old McDonald had a Farm", or other nursery-rhyme type songs. For this idea, we were thinking that we could have the notes (and song lyrics) on a larger staff, and then highlight in red the notes in the song that are incorrect. We could have the use the exact same controls as this game, where you move between notes with the arrow keys, change note accidentals with the space bar, and hear the correct notes played by pressing enter. Additionally, there could be 3 different difficulties, corresponding to how many incorrect notes would appear in the song. 
+
+Frameworks and Libraries used:
+We used Phaser to implement this project. Additionally, we would like to acknowledge the University of Iowa's Electronic Music Studios. They have created an online library of piano recordings, and we are very grateful for their decision to make this collection downloadable for free. 
