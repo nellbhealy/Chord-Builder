@@ -12,11 +12,11 @@ When the player has successfully corrected the chord, they will move on to anoth
 
 ## How To Play
 
-Go to [lwbecker.github.io/Chord-Builder](https://lwbecker.github.io/Chord-Builder/)
+Go to [nellbhealy.github.io/Chord-Builder](https://nellbhealy.github.io/Chord-Builder/)
 
 ## Authors and Acknowledgements
 
-This project was created by Liam Becker, Kirsten Freeman, and Anna Serenius.
+This project was created by Eleanor Healy, Kirsten Freeman, and Anna Serenius.
 We would like to acknowledge the University of Iowa's Electronic Music Studios. They have created an online library of piano recordings, and we are very grateful for their decision to make this collection downloadable for free. 
 
 
