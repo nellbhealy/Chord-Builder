@@ -1,5 +1,5 @@
 Chord Builder Written Report
-Created by: Liam Becker, Anna Serenius, and Kirsten Freeman
+Created by: Nell Becker, Anna Serenius, and Kirsten Freeman
 
 Intended Audience:
 Chord Builder is supposed to be both fun and educational for people of all ages. Our intended audience is people who want to learn more about music in an interactive way. 
@@ -9,7 +9,7 @@ Building and Deploying our Project:
 During production, we ran browser-sync in order to deploy our project. 
 
 How to Begin Gameplay:
-To get to our game, first navigate to lwbecker.github.io/Chord-Builder. 
+To get to our game, first navigate to nellbhealy.github.io/Chord-Builder. 
 Once you're there, to start the game, press the spacebar. The staff will appear on screen, and you will be given the name of a chord, along with the four notes that make up the chord - but wait, some of the notes may be incorrect! After the notes are loaded onto the staff, each will be played in succession, and then all the notes will be played together. 
 To change between the notes of the chord, press the left and right arrow keys. To change a note’s accidental, use the spacebar. 
 Whenever the user returns to the root note of the chord, the chord will be played in succession, the same way it was at the beginning of the game. 
